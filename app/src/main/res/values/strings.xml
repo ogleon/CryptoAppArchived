@@ -2,4 +2,8 @@
     <string name="app_name">P2_CryptoAffinity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_1h_title">1h:</string>
+    <string name="tv_24h_title">24h:</string>
+    <string name="tv_7d_title">7d:</string>
+    <string name="divider">|</string>
 </resources>
