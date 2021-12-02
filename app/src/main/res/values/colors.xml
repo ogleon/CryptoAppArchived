@@ -12,6 +12,6 @@
     <color name="darkPrimaryVariant">#00796B</color>
     <color name="text_and_icons">#ffffff</color>
     <color name="accentColor">#FFC107</color>
-    <color name="background">#ffffff</color>
+    <color name="background">#ede9e0</color>
 
 </resources>

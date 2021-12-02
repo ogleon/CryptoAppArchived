@@ -6,4 +6,10 @@
     <string name="tv_24h_title">24h:</string>
     <string name="tv_7d_title">7d:</string>
     <string name="divider">|</string>
+    <string name="title1">General Stats</string>
+    <string name="subtitle0">Max Supply:</string>
+    <string name="subtitle1">Circulating Supply:</string>
+    <string name="title0">Description</string>
+    <string name="subtitle2">Market Cap:</string>
+    <string name="subtitle3">Market Cap Dominance:</string>
 </resources>
