@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="12dp">
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:id="@+id/linearLayoutParent"
         android:layout_width="match_parent"
+        android:background="#f9f8f5"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -16,9 +17,8 @@
             android:id="@+id/tv_last_updated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="end"
+            android:background="#e0e0e0"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="italic"
@@ -28,9 +28,10 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:background="#f5f5f5"
+            android:background="#f9f8f5"
             android:orientation="horizontal">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -203,8 +204,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#f5f5f5"
+            android:background="#e0e0e0 "
             android:text="@string/title0"
             android:textColor="#000000" />
 
@@ -212,11 +212,11 @@
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:justificationMode="inter_word"
-            android:textColor=" #424242 "
+            android:textColor="#34495e"
             tools:targetApi="o"
             tools:text="Bitcoin (BTC) is a consensus network that enables a new payment system and a completely digital currency. Powered by its users, it is a peer to peer payment network that requires no central authority to operate. On October 31st, 2008, an individual or group of individuals operating under the pseudonym 'Satoshi Nakamoto' published the Bitcoin Whitepaper and described it as: 'a purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution.'" />
 
@@ -224,9 +224,8 @@
             android:id="@+id/tv_title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#f5f5f5"
+            android:layout_marginTop="20dp"
+            android:background="#e0e0e0 "
             android:text="@string/title1"
             android:textColor="#000000" />
 
@@ -234,12 +233,10 @@
             android:id="@+id/tv_subtitle0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#5856d6"
+            android:layout_marginTop="15dp"
+            android:background="#eeeeee"
             android:text="@string/subtitle0"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_market_cap"
@@ -247,20 +244,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor=" #212121 "
+            android:textColor="#34495e"
             tools:text="852164659250.2758" />
 
         <TextView
             android:id="@+id/tv_subtitle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#5856d6"
+            android:background="#eeeeee"
             android:text="@string/subtitle1"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_circulating_supply"
@@ -268,20 +262,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor=" #212121 "
+            android:textColor="#34495e"
             tools:text="17199862" />
 
         <TextView
             android:id="@+id/tv_subtitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#5856d6"
+            android:background="#eeeeee"
             android:text="@string/subtitle2"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_max_supply"
@@ -289,20 +280,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor=" #212121 "
+            android:textColor="#34495e"
             tools:text="21000000" />
 
         <TextView
             android:id="@+id/tv_subtitle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#5856d6"
+            android:background="#eeeeee"
             android:text="@string/subtitle3"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_market_dominance"
@@ -310,8 +298,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor=" #212121"
+            android:layout_marginBottom="15dp"
+            android:textColor="#34495e"
             tools:text="51" />
 
     </LinearLayout>
