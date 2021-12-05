@@ -11,5 +11,5 @@
     <string name="subtitle1">Circulating Supply:</string>
     <string name="title0">Description</string>
     <string name="subtitle2">Market Cap:</string>
-    <string name="subtitle3">Market Cap Dominance:</string>
+    <string name="subtitle3">Rank:</string>
 </resources>
