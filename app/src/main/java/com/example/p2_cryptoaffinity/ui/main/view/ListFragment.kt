@@ -2,9 +2,6 @@ package com.example.p2_cryptoaffinity.ui.main.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import android.util.Log.DEBUG
-import android.util.Log.VERBOSE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.p2_cryptoaffinity.BuildConfig.DEBUG
 import com.example.p2_cryptoaffinity.R
 import com.example.p2_cryptoaffinity.data.api.ApiHelper
 import com.example.p2_cryptoaffinity.data.api.RetrofitBuilder
-import com.example.p2_cryptoaffinity.data.model.Coin
-import com.example.p2_cryptoaffinity.data.model.TickerEntity
+import com.example.p2_cryptoaffinity.data.model.CoinResponse
 import com.example.p2_cryptoaffinity.databinding.FragmentListBinding
 import com.example.p2_cryptoaffinity.ui.base.ViewModelFactory
 import com.example.p2_cryptoaffinity.ui.main.adapter.TickersAdapter
@@ -69,7 +64,7 @@ class ListFragment : Fragment(), TickersAdapter.OnClickListener {
                     Status.SUCCESS -> {
                         binding.rv.visibility = View.VISIBLE
                         binding.rvProgressBar.visibility = View.GONE
-                        resource.data?.let { coins -> retrieveList(coins)  }
+                        resource.data?.let { coins -> retrieveList(coins) }
                     }
                     Status.ERROR -> {
                         binding.rv.visibility = View.VISIBLE
@@ -86,15 +81,15 @@ class ListFragment : Fragment(), TickersAdapter.OnClickListener {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun retrieveList(coins: List<TickerEntity>) {
+    private fun retrieveList(coinResponses: List<CoinResponse>) {
         adapter.apply {
-            addCoins(coins)
+            addCoins(coinResponses)
             notifyDataSetChanged()
         }
     }
 
-    override fun onClick(coin: TickerEntity) {
-        viewModel.select(coin)
+    override fun onClick(coinResponse: CoinResponse) {
+        viewModel.select(coinResponse.id)
         parentFragmentManager.beginTransaction().apply {
             replace(R.id.container, DetailsFragment())
             setReorderingAllowed(true)

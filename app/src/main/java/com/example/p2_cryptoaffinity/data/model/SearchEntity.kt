@@ -4,5 +4,5 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class SearchEntity(
-    val currencies: List<TickerEntity>,
+    val currencies: List<CoinResponse>,
 )

@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class QuoteEntity(
+data class Quotes(
     @Json(name = "price") val price: Double,
     @Json(name = "volume_24h") val dailyVolume: Double,
     @Json(name = "volume_24h_change_24h") val dailyVolumeDailyChange: Double,

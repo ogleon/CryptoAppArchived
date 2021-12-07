@@ -28,30 +28,27 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        model.selectedCoin.observe(viewLifecycleOwner, {
-            val coin = it
+
+        model.selectedId.observe(viewLifecycleOwner, {
+
+            val coin = model.getCoin(it)
+
             Glide.with(this)
-                .load(Constants.imageUrl + coin.symbol)
+                .load(Constants.imageUrl + coin.value?.data!!.symbol)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .circleCrop()
                 .into(binding.imgCoin)
 
-            binding.tvSymbol.text = coin.symbol
-            binding.tvNameCoin.text = coin.name
-            binding.tv1hValue.text
-            binding.tv24hValue.text
-            binding.tv7dValue.text
-            binding.tvMarketCap.text
-            binding.tvCurrencyPrice.text
-            binding.tvCirculatingSupply.text = coin.circulatingSupply.toString()
-            binding.tvMarketDominance.text = coin.rank.toString()
-            binding.tvMaxSupply.text = coin.maxSupply.toString()
+            binding.tvSymbol.text = coin.value?.data!!.symbol
+            binding.tvNameCoin.text = coin.value?.data!!.name
+            //  binding.tv1hValue.text = coin.quotes.USD.percent_change_1h.toString()
+            //  binding.tv24hValue.text = coin.quotes.USD.percent_change_24h.toString()
 
             binding.tv1hValue.setTextColor(
                 Color.parseColor(
                     when {
-                      //  coin.quotes.USD.percent_change_1h.toString().contains("-") -> "#ff0000"
+                        //  coin.quotes.USD.percent_change_1h.toString().contains("-") -> "#ff0000"
                         else -> "#32CD32"
                     }
                 )
@@ -60,7 +57,7 @@ class DetailsFragment : Fragment() {
             binding.tv24hValue.setTextColor(
                 Color.parseColor(
                     when {
-                    //    coin.quotes.USD.percent_change_24h.toString().contains("-") -> "#ff0000"
+                        //    coin.quotes.USD.percent_change_24h.toString().contains("-") -> "#ff0000"
                         else -> "#32CD32"
                     }
                 )
@@ -69,12 +66,14 @@ class DetailsFragment : Fragment() {
             binding.tv7dValue.setTextColor(
                 Color.parseColor(
                     when {
-                   //     coin.quotes.USD.percent_change_7d.toString().contains("-") -> "#ff0000"
+                        //     coin.quotes.USD.percent_change_7d.toString().contains("-") -> "#ff0000"
                         else -> "#32CD32"
                     }
                 )
             )
+
         })
+
     }
 
 }
