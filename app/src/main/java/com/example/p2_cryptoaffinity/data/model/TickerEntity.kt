@@ -17,3 +17,21 @@ data class TickerEntity(
     var quotes: Map<String, QuoteEntity>? = emptyMap(),
     var tags: List<String>? = emptyList()
 )
+
+fun TickerEntity.toCoin(): Coin {
+    return Coin(
+        id = id,
+        name = name,
+        symbol = symbol,
+        lastUpdated = lastUpdated.toString(),
+        percentChange1h = quotes?.get("USD")?.percentChange1h.toString(),
+        percentchange24h = quotes?.get("USD")?.percentChange24h.toString(),
+        percentChange7d = quotes?.get("USD")?.percentChange7d.toString(),
+        marketCap = quotes?.get("USD")?.marketCap.toString(),
+        price = quotes?.get("USD")?.price.toString(),
+        maxSupply = maxSupply.toString(),
+        totalSupply = totalSupply.toString(),
+        circulatingSupply = circulatingSupply.toString(),
+        rank = rank.toString()
+    )
+}

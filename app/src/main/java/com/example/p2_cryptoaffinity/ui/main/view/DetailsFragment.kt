@@ -30,8 +30,8 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         model.selectedCoin.observe(viewLifecycleOwner, {
             val coin = it
-            Glide.with(view.context)
-                .load(Constants.imageUrl + "${coin.name}-${coin.symbol}-logo.svg?v=014")
+            Glide.with(this)
+                .load(Constants.imageUrl + coin.symbol)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .circleCrop()
@@ -39,18 +39,19 @@ class DetailsFragment : Fragment() {
 
             binding.tvSymbol.text = coin.symbol
             binding.tvNameCoin.text = coin.name
-            binding.tv1hValue.text = coin.quotes.USD.percent_change_1h.toString().plus("%")
-            binding.tv24hValue.text = coin.quotes.USD.percent_change_24h.toString().plus("%")
-            binding.tv7dValue.text = coin.quotes.USD.percent_change_7d.toString().plus("%")
-            binding.tvMarketCap.text = coin.quotes.USD.market_cap.toString()
-            binding.tvCurrencyPrice.text = coin.quotes.USD.price.toString()
-            binding.tvCirculatingSupply.text = coin.max_supply
-            binding.tvMarketDominance.text = coin.rank
+            binding.tv1hValue.text
+            binding.tv24hValue.text
+            binding.tv7dValue.text
+            binding.tvMarketCap.text
+            binding.tvCurrencyPrice.text
+            binding.tvCirculatingSupply.text = coin.circulatingSupply.toString()
+            binding.tvMarketDominance.text = coin.rank.toString()
+            binding.tvMaxSupply.text = coin.maxSupply.toString()
 
             binding.tv1hValue.setTextColor(
                 Color.parseColor(
                     when {
-                        coin.quotes.USD.percent_change_1h.toString().contains("-") -> "#ff0000"
+                      //  coin.quotes.USD.percent_change_1h.toString().contains("-") -> "#ff0000"
                         else -> "#32CD32"
                     }
                 )
@@ -59,7 +60,7 @@ class DetailsFragment : Fragment() {
             binding.tv24hValue.setTextColor(
                 Color.parseColor(
                     when {
-                        coin.quotes.USD.percent_change_24h.toString().contains("-") -> "#ff0000"
+                    //    coin.quotes.USD.percent_change_24h.toString().contains("-") -> "#ff0000"
                         else -> "#32CD32"
                     }
                 )
@@ -68,7 +69,7 @@ class DetailsFragment : Fragment() {
             binding.tv7dValue.setTextColor(
                 Color.parseColor(
                     when {
-                        coin.quotes.USD.percent_change_7d.toString().contains("-") -> "#ff0000"
+                   //     coin.quotes.USD.percent_change_7d.toString().contains("-") -> "#ff0000"
                         else -> "#32CD32"
                     }
                 )

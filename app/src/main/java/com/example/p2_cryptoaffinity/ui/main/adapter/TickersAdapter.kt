@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.p2_cryptoaffinity.R
 import com.example.p2_cryptoaffinity.data.model.TickerEntity
 import com.example.p2_cryptoaffinity.databinding.ItemCryptoBinding
+import com.example.p2_cryptoaffinity.utils.Constants
 
 
-class TickersAdapter(private val coins: MutableList<TickerEntity>, private val listener: OnClickListener) :
+class TickersAdapter(
+    private val coins: MutableList<TickerEntity>,
+    private val listener: OnClickListener
+) :
     RecyclerView.Adapter<TickersAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -23,50 +29,26 @@ class TickersAdapter(private val coins: MutableList<TickerEntity>, private val l
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val tickerEntity = coins[position]
+        val coin = coins[position]
 
         with(holder) {
-            setListener(tickerEntity)
-            com.bumptech.glide.Glide.with(context)
-                .load(com.example.p2_cryptoaffinity.utils.Constants.imageUrl + "${tickerEntity.name}-${tickerEntity.symbol}-logo.svg?v=014")
-                .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.ALL)
+            setListener(coin)
+
+            Glide.with(context)
+
+                .load(Constants.imageUrl + coin.symbol)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .circleCrop()
                 .into(binding.imgCoin)
 
-            binding.tvSymbol.text = tickerEntity.symbol
-            binding.tvNameCoin.text = tickerEntity.name
-            binding.tv1hValue.text = tickerEntity.quotes?.get("percentChange1h").toString().plus("%")
-            binding.tv24hValue.text = tickerEntity.quotes?.get("percentChange24h").toString().plus("%")
-            binding.tv7dValue.text = tickerEntity.quotes?.get("percentChange7d").toString().plus("%")
 
-            binding.tv1hValue.setTextColor(
-                android.graphics.Color.parseColor(
-                    when {
-                        tickerEntity.quotes?.get("percentChange1h").toString().contains("-") -> "#ff0000"
-                        else -> "#32CD32"
-                    }
-                )
-            )
-
-            binding.tv24hValue.setTextColor(
-                android.graphics.Color.parseColor(
-                    when {
-                        tickerEntity.quotes?.get("percentChange24h").toString().contains("-") -> "#ff0000"
-                        else -> "#32CD32"
-                    }
-                )
-            )
-
-            binding.tv7dValue.setTextColor(
-                android.graphics.Color.parseColor(
-                    when {
-                        tickerEntity.quotes?.get("percentChange7d").toString().contains("-") -> "#ff0000"
-                        else -> "#32CD32"
-                    }
-                )
-            )
-
+            binding.tvSymbol.text = coin.symbol
+            binding.tvNameCoin.text = coin.name
+            binding.tvCurrencyPrice.text = coin.quotes!!["USD"]?.price.toString()
+            binding.tv1hValue.text = coin.quotes!!["USD"]?.percentChange1h.toString()
+            binding.tv24hValue.text = coin.quotes!!.get("USD")?.percentChange24h.toString()
+            binding.tv7dValue.text
         }
 
     }
@@ -75,9 +57,9 @@ class TickersAdapter(private val coins: MutableList<TickerEntity>, private val l
 
         val binding = ItemCryptoBinding.bind(view)
 
-        fun setListener(tickerEntity: TickerEntity) {
+        fun setListener(coin: TickerEntity) {
             binding.root.setOnClickListener {
-                listener.onClick(tickerEntity)
+                listener.onClick(coin)
             }
         }
 
@@ -88,13 +70,13 @@ class TickersAdapter(private val coins: MutableList<TickerEntity>, private val l
     }
 
     interface OnClickListener {
-        fun onClick(tickerEntity: TickerEntity)
+        fun onClick(coin: TickerEntity)
     }
 
-    fun addTickers(users: List<TickerEntity>) {
+    fun addCoins(coins: List<TickerEntity>) {
         this.coins.apply {
             clear()
-            addAll(users)
+            addAll(coins)
         }
 
     }

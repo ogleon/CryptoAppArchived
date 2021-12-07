@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.p2_cryptoaffinity.ui.coin_detail.DetailsFragment"
+        android:name="com.example.p2_cryptoaffinity.ui.main.view.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
 </navigation>
